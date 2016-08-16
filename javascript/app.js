@@ -7,7 +7,7 @@ angular.module('d3', [])
       function onScriptLoad() {
         // Load client in the browser
         $rootScope.$apply(function() { d.resolve(window.d3); });
-      };
+      }
 
       var scriptTag = $document[0].createElement('script');
       scriptTag.type = 'text/javascript';
@@ -15,25 +15,25 @@ angular.module('d3', [])
       scriptTag.src = 'http://d3js.org/d3.v4.min.js';
       scriptTag.onreadystatechange = function () {
         if (this.readyState == 'complete') onScriptLoad();
-      };
+      }
       scriptTag.onload = onScriptLoad;
 
       var s = $document[0].getElementsByTagName('body')[0];
       s.appendChild(scriptTag);
+
       return {
         d3: function() { return d.promise; }
       };
 }]);
 
-
-var module = angular.module('app', ['d3']);
-module.config(function($locationProvider) {
+angular.module('app', ['d3']);
+angular.module('app', ['d3']).config(function($locationProvider) {
   $locationProvider.html5Mode(true);
 });
-module.service('StockService', StockService);
-module.controller('myController', myController);
+angular.module('app', ['d3']).service('StockService', StockService);
+angular.module('app', ['d3']).controller('myController', myController);
 
-function myController(StockService) {
+function myController(StockService, $scope) {
   var model = this;
   var companyNames = [];
   var company = {};
@@ -55,11 +55,10 @@ function myController(StockService) {
 
       });
     }, function(error){
-      alert(error.message);
+      alert('error');
     });
   };
-};
-
+}
 
 function StockService($http, $q) {
   var domain = "http://query.yahooapis.com/v1/public/yql?q=";

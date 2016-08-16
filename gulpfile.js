@@ -1,13 +1,14 @@
 var gulp = require('gulp');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
 var nodemon = require('gulp-nodemon');
 var order = require("gulp-order");
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var csscomb = require('gulp-csscomb');
 var cssbeautify = require('gulp-cssbeautify');
-var templateCache = require('gulp-angular-templatecache');
+
 
 
 gulp.task('js', function() {
@@ -18,6 +19,7 @@ gulp.task('js', function() {
     ]))
     .pipe(concat('main.js'))
     .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/assets'));
 });
