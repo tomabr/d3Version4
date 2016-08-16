@@ -33,7 +33,7 @@ module.config(function($locationProvider) {
 module.service('StockService', StockService);
 module.controller('myController', myController);
 
-function myController(StockService, $scope) {
+function myController(StockService) {
   var model = this;
   var companyNames = [];
   var company = {};
@@ -55,14 +55,14 @@ function myController(StockService, $scope) {
 
       });
     }, function(error){
-      alert(error);
+      alert(error.message);
     });
   };
 };
 
 
 function StockService($http, $q) {
-  var domain = "http://query.yahooapis.com/v1/public/yql?q=";
+  var domain = "httdp://query.yahooapis.com/v1/public/yql?q=";
   var query = "&format=json&diagnostics=true&env=http://datatables.org/alltables.env";
 
   return {

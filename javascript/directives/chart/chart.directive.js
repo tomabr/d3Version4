@@ -36,7 +36,6 @@ angular.module('app').directive('chart', ['d3Service', function(d3Service) {
 
             var x = d3.scaleTime().range([0, width]),
               x2 = d3.scaleTime().range([0, width]),
-              //x3 = d3.scaleTime().rangeRound([0, width]),
               x3 = d3.scaleBand().rangeRound([0, width]).padding(0.1).align(0.1),
               y = d3.scaleLinear().range([height, 0]),
               y2 = d3.scaleLinear().range([height2, 0]),
@@ -311,10 +310,6 @@ angular.module('app').directive('chart', ['d3Service', function(d3Service) {
                 })
                 .attr("width", x3.bandwidth());
 
-
-
-
-
               freg.select(".axis--x").call(xAxis3)
                 .selectAll("text")
                 .text(function(d) {
@@ -329,13 +324,6 @@ angular.module('app').directive('chart', ['d3Service', function(d3Service) {
                 .attr("transform", "rotate(-90)");
 
             }
-
-
-
-
-
-
-
           }
         });
 
