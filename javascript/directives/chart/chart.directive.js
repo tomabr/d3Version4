@@ -6,22 +6,20 @@ angular.module('app').directive('chart', ['d3Service', function(d3Service) {
     scope: {
       item: '=ngModel'
     },
-    link: function(scope, element, iAttrs) {
+    link: link,
+  };
 
-      var item;
 
+ function link(scope, element) {
       function getDate(date) {
         return new Date(date);
       }
       d3Service.d3().then(function(d3) {
 
-
         scope.$watch('item', function(nVal) {
           if (!!nVal) {
             var svg;
             d3.select("#ID").remove();
-
-
 
             var data = angular.copy(nVal).reverse();
 
@@ -32,7 +30,6 @@ angular.module('app').directive('chart', ['d3Service', function(d3Service) {
               height = 800 - margin.top - margin.bottom,
               height2 = 800 - margin2.top - margin2.bottom,
               height3 = 800 - margin3.top - margin3.bottom;
-
 
             var x = d3.scaleTime().range([0, width]),
               x2 = d3.scaleTime().range([0, width]),
@@ -329,5 +326,16 @@ angular.module('app').directive('chart', ['d3Service', function(d3Service) {
 
       });
     }
-  };
+
+
+
+
+
+
+
+
+
+
+
+
 }]);
