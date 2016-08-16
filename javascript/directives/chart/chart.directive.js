@@ -4,7 +4,7 @@ angular.module('app').directive('chart', ['d3Service', function(d3Service) {
   return {
     restrict: 'E',
     scope: {
-      item: '<ngModel'
+      item: '<?ngModel'
     },
     link: link
   };
