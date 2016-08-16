@@ -62,7 +62,7 @@ function myController(StockService) {
 
 
 function StockService($http, $q) {
-  var domain = "httdp://query.yahooapis.com/v1/public/yql?q=";
+  var domain = "http://query.yahooapis.com/v1/public/yql?q=";
   var query = "&format=json&diagnostics=true&env=http://datatables.org/alltables.env";
 
   return {
