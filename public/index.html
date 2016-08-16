@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <title>D3v4 with Angular</title>
+  <link rel="stylesheet" href="assets/main.css">
+  <script src="assets/angular.min.js"></script>
+  <script src="assets/main.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body class="container">
+  <h1 class="main__head">D3 v4 Chart</h1>
+
+  <main class="main" ng-controller = "myController as model" >
+  <div>
+    Select:
+   <button ng-repeat="company in model.companiesNames track by company" ng-click="model.showCompany(company)">{{company}}</button>
+   </div>
+   <chart ng-model="model.company"></chart>
+  </main>
+</body>
+
+</html>
